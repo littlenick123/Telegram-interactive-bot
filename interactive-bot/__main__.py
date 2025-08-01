@@ -23,7 +23,7 @@ from telegram.helpers import mention_html
 from db.database import SessionMaker, engine
 from db.model import Base, FormnStatus, MediaGroupMesssage, MessageMap, User
 
-from . import (
+from 。 import (
     admin_group_id,
     admin_user_ids,
     app_name,
@@ -51,11 +51,11 @@ async def _send_media_group_later(context: ContextTypes.DEFAULT_TYPE):
     # 数据库内查找对应的媒体组消息。
     media_group_msgs = (
         db.query(MediaGroupMesssage)
-        .filter(
+        。filter(
             MediaGroupMesssage.media_group_id == media_group_id,
             MediaGroupMesssage.chat_id == from_chat_id,
         )
-        .all()
+        。all()
     )
     chat = await context.bot.get_chat(target_id)
     if dir == "u2a":
@@ -233,7 +233,7 @@ async def callback_query_vcode(update: Update, context: ContextTypes.DEFAULT_TYP
             await query.answer(f"正确，欢迎。")
             sent = await context.bot.send_message(
                 update.effective_chat.id,
-                f"{mention_html(user.id, user.first_name)} , 欢迎。",
+                f"{mention_html(user.id, user.first_name)} , 欢迎，请重新发送消息。",
                 parse_mode="HTML",
             )
             context.user_data["is_human"] = True
